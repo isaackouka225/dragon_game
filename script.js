@@ -1,22 +1,21 @@
+special = 7
 playerTour = true
 let player = {
-    name : prompt("entrer votre nom"),
-    health : 200, 
-    potion : 1,
+    name: prompt("entrer votre nom"),
+    health: 200,
+    potion: 1,
 }
 console.log(player)
 
-special = 2
-
 let dragon = {
-    name : "Pandalf",
-    health : 250
+    name: "Pandalf",
+    health: 250
 
 }
 console.log(dragon)
 
 console.log(`${player.name} vous affrontez le dragon ${dragon.name} pour sauver votre peuple`)
-alert("fight")
+console.log("fight")
 
 function showState() {
     console.log(`votre vie est de ${player.health}`)
@@ -24,14 +23,14 @@ function showState() {
 }
 
 
-function playerAttack (){
-    console.log ("selectionner votre attaque")
-    playerCombo = prompt ("entrer le combo")
+function playerAttack() {
+    console.log("selectionner votre attaque")
+    playerCombo = prompt("entrer le combo")
     if (playerCombo == "punch") {
         console.log(`vous avez donné une punch à ${dragon.name}`)
         dragon.health = dragon.health - 20
     }
-    else if (playerCombo == "kick"){
+    else if (playerCombo == "kick") {
         console.log(`vous avez donné un kick à ${dragon.name}`)
         dragon.health = dragon.health - 25
     }
@@ -42,24 +41,24 @@ function playerAttack (){
         special = special - 1
     }
     else if (playerCombo == "null") {
-        alert ("vous recevez des dommages")
+        console.log("vous recevez des dommages")
         player.health = player.health - 10
     }
 }
 
-function specialAttack(){
-    if (special = 0){
-        alert ("vous n'avez plus d'attaques spéciales")
+function specialAttack() {
+    if (special == 0) {
+        alert("vous n'avez plus d'attaques spéciales")
     }
 }
 
-function dragonAttack (){
+function dragonAttack() {
     dragonDammage = 20
     dragonSpecialDammage = 30
     dragonAttackDammage = Math.random()
-    if (dragonAttackDammage < 0.7){
-    player.health=player.health - dragonDammage
-    alert(`vous recevez une attaque de ${player.name}`)
+    if (dragonAttackDammage < 0.7) {
+        player.health = player.health - dragonDammage
+        console.log(`vous recevez une attaque de ${dragon.name}`)
     }
     else {
         player.health = player.health - dragonSpecialDammage
@@ -67,32 +66,32 @@ function dragonAttack (){
     }
 }
 
-function playRound (){
+function playRound() {
     if (playerTour) {
         playerAttack()
     }
     else {
         dragonAttack()
     }
+    playerTour = !playerTour;
 }
 
-function gameLoop(){
-    console.log ("ready!!!")
-    while (player.health > 0 || dragon.health > 0){
+function gameLoop() {
+    while (player.health > 0 && dragon.health > 0) {
         showState()
         playRound()
-        if (player.health < 0) {
-            player.health = 0
-            showState()
-            console.log("le jeux est terminé, vous avez perdu")
-        }
-        else if (dragon.health < 0) {
-            dragon.health = 0
-            showState()
-            console.log ("vous avez terrassé le dragon")
-        }
         specialAttack()
     }
+    showState
+    if (player.health < 0) {
+        player.health = 0
+        showState()
+        alert("le jeux est terminé, vous avez perdu")
+    }
+    else if (dragon.health < 0) {
+        dragon.health = 0
+        showState()
+        console.log("vous avez terrassé le dragon")
+    }
 }
-
 gameLoop()
