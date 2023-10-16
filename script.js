@@ -1,54 +1,73 @@
+game = document.getElementById(game)
+punchButton = document.getElementById(punchButton)
+kick = document.getElementById(kickButton)
+specialButton = document.getElementById(specialButton)
+playerNameEl = document.getElementById(playerName)
+playerHealthEl = document.getElementById(playerHealth)
+playerHealthBar = document.getElementById(playerHealthBar)
+dragonNameEl = document.getElementById (dragonName)
+dragonHealthEl = document.getElementById(dragonHealth)
+dragonHealthBar = document.getElementById(dragonHealthBar)
+
+
 special = 7
 playerTour = true
+
+
 let player = {
     name: prompt("entrer votre nom"),
     health: 200,
     potion: 1,
 }
-console.log(player)
+
+
 
 let dragon = {
     name: "Pandalf",
     health: 250
 
 }
-console.log(dragon)
 
-console.log(`${player.name} vous affrontez le dragon ${dragon.name} pour sauver votre peuple`)
-console.log("fight")
 
-function showState() {
-    console.log(`votre vie est de ${player.health}`)
-    console.log(`la vie du dragon est de ${dragon.health}`)
+function showCharacterState() {
+    playerNameElement.textContent = player.name;
+    playerHealthElement.textContent = `Santé : ${player.health}`;
+    playerHealthBar.style.width = `${(player.health / 200) * 100}%`;
+    dragonNameElement.textContent = dragon.name;
+    dragonHealthElement.textContent = `Santé : ${dragon.health}`;
+    dragonHealthBar.style.width = `${(dragon.health / 250) * 100}%`;
 }
 
+function showGameText(message) {
+    gameText.textContent = message;
+}
 
-function playerAttack() {
-    console.log("selectionner votre attaque")
-    playerCombo = prompt("entrer le combo")
-    if (playerCombo == "punch") {
-        console.log(`vous avez donné une punch à ${dragon.name}`)
+function playerAttack(attack) {
+    game.innerHTML("selectionner votre attaque")
+    if (attack == "punch") {
+        game.innerHTML(`vous avez donné une punch à ${dragon.name}`)
         dragon.health = dragon.health - 20
     }
-    else if (playerCombo == "kick") {
-        console.log(`vous avez donné un kick à ${dragon.name}`)
+    else if (attack == "kick") {
+        game.innerHTML(`vous avez donné un kick à ${dragon.name}`)
         dragon.health = dragon.health - 25
     }
 
     else if (playerCombo == "special") {
-        console.log(`vous avez fait votre combo special sur ${dragon.name}`)
+        game.innerHTML(`vous avez fait votre combo special sur ${dragon.name}`)
         dragon.health = dragon.health - 35
         special = special - 1
     }
-    else if (playerCombo == "null") {
-        console.log("vous recevez des dommages")
+    else if (attack == "null") {
+        game.innerHTML("vous recevez des dommages")
         player.health = player.health - 10
     }
+    showCharacterState()
 }
 
 function specialAttack() {
     if (special == 0) {
-        alert("vous n'avez plus d'attaques spéciales")
+        game.innerHTML("vous n'avez plus d'attaques spéciales")
     }
 }
 
@@ -62,36 +81,47 @@ function dragonAttack() {
     }
     else {
         player.health = player.health - dragonSpecialDammage
-        alert(`vous recevez la spéciale de ${dragon.name}`)
+        game.innerHTML(`vous recevez la spéciale de ${dragon.name}`)
     }
+    showState()
 }
+
+
+punchButton.addEventListener("click", function () {
+    if (playerTour) {
+        playerAttack("punch");
+        playerTour = false;
+        setTimeout(playRound, 1000);
+    }
+});
+
+kickButton.addEventListener("click", function () {
+    if (playerTour) {
+        playerAttack("kick");
+        playerTour = false;
+        setTimeout(playRound, 1000);
+    }
+});
+
+specialButton.addEventListener("click", function () {
+    if (playerTour) {
+        playerAttack("special");
+        playerTour = false;
+        setTimeout(playRound, 1000);
+    }
+});
+
 
 function playRound() {
-    if (playerTour) {
-        playerAttack()
+    if (!playerTour) {
+        dragonAttack();
+        playerTour = true;
     }
-    else {
-        dragonAttack()
-    }
-    playerTour = !playerTour;
 }
 
+
 function gameLoop() {
-    while (player.health > 0 && dragon.health > 0) {
         showState()
         playRound()
-        specialAttack()
     }
-    showState
-    if (player.health < 0) {
-        player.health = 0
-        showState()
-        alert("le jeux est terminé, vous avez perdu")
-    }
-    else if (dragon.health < 0) {
-        dragon.health = 0
-        showState()
-        console.log("vous avez terrassé le dragon")
-    }
-}
 gameLoop()

@@ -4,9 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>DRAGON GAME</title>
 </head>
 <body>
+    <header>
+        <h1>DRARACARIS</h1>
+        <p>ce jeux est déconseillé au moins de 18 ans</p>
+        <p>les gestes que vous verrez sont réalisés par des heros super entrainé n'essayez pas de défier un dragon chez vous</p>
+    </header>
+    <main>
+        <div class="character" id="player">
+            <h2 id="playerName"></h2>
+            <div class="health-bar">
+                <p>Santé : <span id="playerHealth"></span></p>
+                <div id="playerHealthBar"></div>
+            </div>
+        </div>
+        <div class="character" id="dragon">
+            <h2 id="dragonName"></h2>
+            <div class="health-bar">
+                <p>Santé : <span id="dragonHealth"></span></p>
+                <div id="dragonHealthBar"></div>
+            </div>
+        </div>
+        <p id="gameText"></p>
+        <div id="actions">
+            <button id="punchButton">Coup de poing</button>
+            <button id="kickButton">Coup de pied</button>
+            <button id="specialButton">Attaque spéciale</button>
+    
+    </main>
     <script src="script.js"></script>
 </body>
 
