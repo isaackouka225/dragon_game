@@ -1,13 +1,13 @@
-game = document.getElementById(game)
-punchButton = document.getElementById(punchButton)
-kick = document.getElementById(kickButton)
-specialButton = document.getElementById(specialButton)
-playerNameEl = document.getElementById(playerName)
-playerHealthEl = document.getElementById(playerHealth)
-playerHealthBar = document.getElementById(playerHealthBar)
-dragonNameEl = document.getElementById (dragonName)
-dragonHealthEl = document.getElementById(dragonHealth)
-dragonHealthBar = document.getElementById(dragonHealthBar)
+game = document.getElementById("game")
+punchButton = document.getElementById("punchButton")
+kickButton = document.getElementById("kickButton")
+specialButton = document.getElementById("specialButton")
+playerNameEl = document.getElementById("playerName")
+playerHealthEl = document.getElementById("playerHealth")
+playerHealthBar = document.getElementById("playerHealthBar")
+dragonNameEl = document.getElementById ("dragonName")
+dragonHealthEl = document.getElementById("dragonHealth")
+dragonHealthBar = document.getElementById("dragonHealthBar")
 
 
 special = 7
@@ -30,11 +30,11 @@ let dragon = {
 
 
 function showCharacterState() {
-    playerNameElement.textContent = player.name;
-    playerHealthElement.textContent = `Santé : ${player.health}`;
+    playerNameEl.textContent = player.name;
+    playerHealthEl.textContent = `Santé : ${player.health}`;
     playerHealthBar.style.width = `${(player.health / 200) * 100}%`;
-    dragonNameElement.textContent = dragon.name;
-    dragonHealthElement.textContent = `Santé : ${dragon.health}`;
+    dragonNameEl.textContent = dragon.name;
+    dragonHealthEl.textContent = `Santé : ${dragon.health}`;
     dragonHealthBar.style.width = `${(dragon.health / 250) * 100}%`;
 }
 
@@ -83,7 +83,7 @@ function dragonAttack() {
         player.health = player.health - dragonSpecialDammage
         showGameText(`vous recevez la spéciale de ${dragon.name}`)
     }
-    showCharacterState
+    showCharacterState ()
 }
 
 
@@ -121,7 +121,7 @@ function playRound() {
 
 
 function gameLoop() {
-        showCharacterState
+        showCharacterState()
         playRound()
     }
 
