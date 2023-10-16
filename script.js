@@ -53,7 +53,7 @@ function playerAttack(attack) {
         dragon.health = dragon.health - 25
     }
 
-    else if (playerCombo == "special") {
+    else if (attack == "special") {
         showGameText(`vous avez fait votre combo special sur ${dragon.name}`)
         dragon.health = dragon.health - 35
         special = special - 1
