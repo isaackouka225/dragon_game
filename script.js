@@ -43,23 +43,23 @@ function showGameText(message) {
 }
 
 function playerAttack(attack) {
-    game.innerHTML("selectionner votre attaque")
+    showGameText("selectionner votre attaque")
     if (attack == "punch") {
-        game.innerHTML(`vous avez donné une punch à ${dragon.name}`)
+        showGameText(`vous avez donné une punch à ${dragon.name}`)
         dragon.health = dragon.health - 20
     }
     else if (attack == "kick") {
-        game.innerHTML(`vous avez donné un kick à ${dragon.name}`)
+        showGameText(`vous avez donné un kick à ${dragon.name}`)
         dragon.health = dragon.health - 25
     }
 
     else if (playerCombo == "special") {
-        game.innerHTML(`vous avez fait votre combo special sur ${dragon.name}`)
+        showGameText(`vous avez fait votre combo special sur ${dragon.name}`)
         dragon.health = dragon.health - 35
         special = special - 1
     }
     else if (attack == "null") {
-        game.innerHTML("vous recevez des dommages")
+        showGameText("vous recevez des dommages")
         player.health = player.health - 10
     }
     showCharacterState()
@@ -67,7 +67,7 @@ function playerAttack(attack) {
 
 function specialAttack() {
     if (special == 0) {
-        game.innerHTML("vous n'avez plus d'attaques spéciales")
+        showGameText("vous n'avez plus d'attaques spéciales")
     }
 }
 
@@ -77,13 +77,13 @@ function dragonAttack() {
     dragonAttackDammage = Math.random()
     if (dragonAttackDammage < 0.7) {
         player.health = player.health - dragonDammage
-        console.log(`vous recevez une attaque de ${dragon.name}`)
+        showGameText(`vous recevez une attaque de ${dragon.name}`)
     }
     else {
         player.health = player.health - dragonSpecialDammage
-        game.innerHTML(`vous recevez la spéciale de ${dragon.name}`)
+        showGameText(`vous recevez la spéciale de ${dragon.name}`)
     }
-    showState()
+    showCharacterState
 }
 
 
@@ -121,7 +121,9 @@ function playRound() {
 
 
 function gameLoop() {
-        showState()
+        showCharacterState
         playRound()
     }
+
+    
 gameLoop()
