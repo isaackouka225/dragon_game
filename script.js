@@ -127,3 +127,5 @@ function gameLoop() {
 
     
 gameLoop()
+
+// ecrivez juste bonjour et ajoutez vote en commentaire dans le html, faites attention a ne pas supprimer mon code. meercii chers collègues dev ;)
