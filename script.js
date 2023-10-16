@@ -1,24 +1,12 @@
-let playerHealth = 202;
-let enemyHealth = 250;
-let regenerationCount = 3;
-let gameTurn = 1;
-let playerName = "";
+let player = {
+    name : prompt("entrer votre nom"),
+    health : 200, 
+    potion : 3
+}
+console.log(player)
 
-const attackPlayerAudio = document.getElementById("playerAttackAudio");
-const attackDragonAudio = document.getElementById("dragonAttackAudio");
-const gameBackgroundAudio = document.getElementById("gameAudio");
-
-function playAttackSound(audioElement) {
-    audioElement.play();
+let dragon = {
+    name : "Pandalf",
+    health : 250
 }
 
-function playGameBackgroundSound() {
-    gameBackgroundAudio.play();
-}
-
-function getPlayerName() {
-    playerName = prompt("Entrez votre nom :");
-    if (playerName === null || playerName.trim() === "") {
-        playerName = "Joueur";
-    }
-}
