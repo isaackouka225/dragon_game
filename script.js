@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 game = document.getElementById("game")
 punchButton = document.getElementById("punchButton")
 kickButton = document.getElementById("kickButton")
@@ -9,18 +8,6 @@ playerHealthBar = document.getElementById("playerHealthBar")
 dragonNameEl = document.getElementById ("dragonName")
 dragonHealthEl = document.getElementById("dragonHealth")
 dragonHealthBar = document.getElementById("dragonHealthBar")
-=======
-let game = document.getElementById("game")
-let punchButton = document.getElementById("punchButton")
-let kick = document.getElementById("kickButton")
-let specialButton = document.getElementById("specialButton")
-let playerNameEl = document.getElementById("playerName")
-let playerHealth = document.getElementById("playerHealth")
-let playerHealthBar = document.getElementById("playerHealthBar")
-let dragonName = document.getElementById ("dragonName")
-let dragonHealth = document.getElementById("dragonHealth")
-let dragonHealthBar = document.getElementById("dragonHealthBar")
->>>>>>> modificate
 
 
 let special = 7
@@ -43,19 +30,11 @@ let dragon = {
 
 
 function showCharacterState() {
-<<<<<<< HEAD
     playerNameEl.textContent = player.name;
     playerHealthEl.textContent = `Santé : ${player.health}`;
     playerHealthBar.style.width = `${(player.health / 200) * 100}%`;
     dragonNameEl.textContent = dragon.name;
     dragonHealthEl.textContent = `Santé : ${dragon.health}`;
-=======
-    playerName.textContent = player.name;
-    playerHealth.textContent = `Santé : ${player.health}`;
-    playerHealthBar.style.width = `${(player.health / 200) * 100}%`;
-    dragonName.textContent = dragon.name;
-    dragonHealth.textContent = `Santé : ${dragon.health}`;
->>>>>>> modificate
     dragonHealthBar.style.width = `${(dragon.health / 250) * 100}%`;
 }
 
@@ -84,6 +63,14 @@ function playerAttack(attack) {
         player.health = player.health - 10
     }
     showCharacterState()
+
+    if (dragon.health <= 0) {
+        showGameText(`Félicitations ! Vous avez vaincu ${dragon.name}`);
+        return;
+    }
+    if (player.health <= 0) {
+        showGameText(`Dommage, ${dragon.name} vous a vaincu.`);
+        return;
 }
 
 function specialAttack() {
@@ -104,11 +91,7 @@ function dragonAttack() {
         player.health = player.health - dragonSpecialDammage
         showGameText(`vous recevez la spéciale de ${dragon.name}`)
     }
-<<<<<<< HEAD
     showCharacterState ()
-=======
-    showCharacterState()
->>>>>>> modificate
 }
 
 
@@ -146,7 +129,6 @@ function playRound() {
 
 
 function gameLoop() {
-<<<<<<< HEAD
         showCharacterState()
         playRound()
     }
@@ -154,11 +136,4 @@ function gameLoop() {
     
 gameLoop()
 
-// ecrivez juste bonjour et ajoutez vote en commentaire dans le html, faites attention a ne pas supprimer mon code. meercii chers collègues dev ;)
-=======
-        showCharacterState();
-        playRound();
-    }
-
-    gameLoop ();
->>>>>>> modificate
+// ecrivez juste bonjour et ajoutez vote en commentaire dans le html, faites attention a ne pas supprimer mon code. meercii chers collègues dev);
